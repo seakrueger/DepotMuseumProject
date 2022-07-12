@@ -51,20 +51,26 @@ class ButtonHandler():
 
     def run(self):
         while True:
+            if not self.buttons[0].value:
+                self._pulse_on(0)
+                
+                self.queue.put(0)
+                self.display.button_one()
+                
+                self._pulse_off(0)
+
             if not self.buttons[1].value:
                 self._pulse_on(1)
+                
                 self.queue.put(1)
-                self.display.button_one()
+                self.display.button_two()
+                
                 self._pulse_off(1)
-
+            
             if not self.buttons[2].value:
                 self._pulse_on(2)
+                
                 self.queue.put(2)
-                self.display.button_two()
-                self._pulse_off(2)
-            
-            if not self.buttons[3].value:
-                self._pulse_on(3)
-                self.queue.put(3)
                 self.display.button_three()
-                self._pulse_off(3)
+                
+                self._pulse_off(2)

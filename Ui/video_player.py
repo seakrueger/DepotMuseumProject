@@ -1,4 +1,4 @@
-from vlc import MediaPlayer, Media, libvlc_vlm_set_loop
+from vlc import MediaPlayer, Media
 import os
 import time
 
