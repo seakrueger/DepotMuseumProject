@@ -2,14 +2,14 @@ from adafruit_motorkit import MotorKit
 import board
 import time
 
-from display import Display
+from displays.display import Display
 
 class WindNWater(Display):
     def __init__(self, wait):
         super().__init__(wait)
 
-        self.wind_kit = MotorKit(i2c=board.I2C(), address=60)
-        self.water_kit = MotorKit(i2c=board.I2C(), address=61)
+        self.wind_kit = MotorKit(i2c=board.I2C())
+        self.water_kit = MotorKit(i2c=board.I2C(), address=0x61)
 
     # Water Wheel
     def button_one(self):
@@ -21,10 +21,10 @@ class WindNWater(Display):
 
     # Wind Turbines
     def button_two(self):
-        self.wind_kit.motor1.throttle = 0.25
-        self.wind_kit.motor2.throttle = 0.25
-        self.wind_kit.motor3.throttle = 0.25
-        self.wind_kit.motor4.throttle = 0.25
+        self.wind_kit.motor1.throttle = 0.2
+        self.wind_kit.motor2.throttle = 0.2
+        self.wind_kit.motor3.throttle = 0.2
+        self.wind_kit.motor4.throttle = 0.2
 
         super().wait()
 

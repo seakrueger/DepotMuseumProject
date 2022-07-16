@@ -4,8 +4,10 @@ import time
 
 # A program for testing motors
 
-kit = MotorKit(i2c=board.I2C(), address=96)
+kit = MotorKit(i2c=board.I2C(), address=0x60)
 
-kit.motor1.throttle = 0.5
+m = kit.motor4
+
+m.throttle = 0.75
 time.sleep(2)
-kit.motor1.throttle = 0
+m.throttle = 0
