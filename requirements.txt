@@ -1,0 +1,5 @@
+python-vlc
+adafruit-circuitpython-motorkit
+adafruit-circuitpython-pca9685
+adafruit-circuitpython-servokit
+adafruit-circuitpython-seesaw
