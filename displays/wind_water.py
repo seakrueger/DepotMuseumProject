@@ -9,6 +9,8 @@ class WindNWater(Display):
         super().__init__(wait)
 
         self.wind_kit = MotorKit(i2c=board.I2C())
+        self.wind_motors = [self.wind_kit.motor1, self.wind_kit.motor2, self.wind_kit.motor3, self.wind_kit.motor4]
+        
         self.water_kit = MotorKit(i2c=board.I2C(), address=0x61)
 
     # Water Wheel
@@ -21,18 +23,14 @@ class WindNWater(Display):
 
     # Wind Turbines
     def button_two(self):
-        self.wind_kit.motor1.throttle = 0.2
-        self.wind_kit.motor2.throttle = 0.2
-        self.wind_kit.motor3.throttle = 0.2
-        self.wind_kit.motor4.throttle = 0.2
+        for motor in self.wind_motors:
+            motor.throttle = 0.2
 
         super().wait()
 
         # Stop the 4 motors
-        self.wind_kit.motor1.throttle = 0
-        self.wind_kit.motor2.throttle = 0
-        self.wind_kit.motor3.throttle = 0
-        self.wind_kit.motor4.throttle = 0
+        for motor in self.wind_motors:
+            motor.throttle = 0
 
     # Dam
     def button_three(self):
