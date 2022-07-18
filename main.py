@@ -4,11 +4,11 @@ import sys
 
 from hardware.buttons import ButtonHandler
 from Ui.video_handler import VideoHandler
-from displays.wind_water import WindNWater 
+from displays.display import Display 
 
 
 def main():
-    display = WindNWater(5)
+    display = Display(5)
     
     q = Queue()
     buttons = ButtonHandler(display, q)
