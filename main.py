@@ -9,7 +9,7 @@ from Ui.video_handler import VideoHandler
 from displays.display import Display 
 
 def main(args):
-    logging.basicConfig(format='%(asctime)s - %(message)s', level=logging.DEBUG)
+    logging.basicConfig(format='%(asctime)s - %(message)s', level=logging.INFO)
     if args.vlclog:
         os.environ["VLC_VERBOSE"] = str("0")
     else:
