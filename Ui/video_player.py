@@ -15,15 +15,9 @@ class Player():
         self.player.set_media(video)
         self.player.play()
 
-        self.playing = True
-        if self._is_finished():     
-            print("finished media")
+        self._wait_for_finish()
+        print("finished")
 
-    def _is_finished(self):
-        while self.playing:
-            state = self.player.get_state()
-            if state == 6 or state == 7:
-                self.playing = False
-                return True
-
+    def _wait_for_finish(self):
+        while self.player.get_state() not in set([5, 6, 7]):
             time.sleep(0.1)    
