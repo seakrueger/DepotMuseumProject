@@ -1,0 +1,14 @@
+[Unit]
+Description=Display Exhibit
+
+[Service]
+WorkingDirectory=/home/%u/source/DepotMuseumProject
+ExecStart=/usr/bin/python3 main.py
+Restart=on-failure
+RestartSec=3
+Type=simple
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=default.target

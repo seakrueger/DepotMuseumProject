@@ -1,6 +1,7 @@
-from vlc import MediaPlayer, Media
 import os
 import time
+import logging
+from vlc import MediaPlayer, Media
 
 class Player():
     def __init__(self):
@@ -16,7 +17,7 @@ class Player():
         self.player.play()
 
         self._wait_for_finish()
-        print("finished")
+        logging.debug("finished")
 
     def _wait_for_finish(self):
         while self.player.get_state() not in set([5, 6, 7]):

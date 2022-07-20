@@ -40,6 +40,11 @@ class ButtonHandler():
             led = PWMOut(self.arcade_qt, led_pin)
             self.leds.append(led)
 
+        # Pulse buttons on start
+        for i in range(3):
+            self._pulse_on(i)
+            self._pulse_off(i)
+
     def _pulse_on(self, led_num):
         for cycle in range(0, 65535, 2000):
                 self.leds[led_num].duty_cycle = cycle
