@@ -7,15 +7,16 @@ from displays.display import Display
 class WindNWater(Display):
     def __init__(self, wait):
         super().__init__(wait)
+        self.wait = wait
 
         self.wind_kit = MotorKit(i2c=board.I2C())
         self.wind_motors = [self.wind_kit.motor1, self.wind_kit.motor2, self.wind_kit.motor3, self.wind_kit.motor4]
-        
+
         self.water_kit = MotorKit(i2c=board.I2C(), address=0x61)
 
     # Water Wheel
     def button_one(self):
-        self.water_kit.motor1.throttle  = 0.1
+        self.water_kit.motor1.throttle  = 0.6
 
         super().wait()
 
@@ -34,8 +35,10 @@ class WindNWater(Display):
 
     # Dam
     def button_three(self):
-        self.water_kit.motor2.throttle = 0.4
-
-        super().wait()
+        for i in range(self.wait):
+            self.water_kit.motor2.throttle = 0.4
+            time.sleep(0.1)
+            self.water_kit.motor2.throttle = 0.1
+            time.sleep(0.9)
 
         self.water_kit.motor2.throttle = 0

@@ -6,8 +6,8 @@ import time
 
 kit = MotorKit(i2c=board.I2C(), address=0x60)
 
-m = kit.motor4
+m = kit.motor1
 
-m.throttle = 0.75
+m.throttle = 0.5
 time.sleep(2)
 m.throttle = 0
