@@ -5,7 +5,7 @@ import os
 from queue import Queue
 
 from hardware.buttons import ButtonHandler
-from Ui.video_handler import VideoHandler
+from ui.video_handler import VideoHandler
 from displays.display import Display 
 
 def main(args):

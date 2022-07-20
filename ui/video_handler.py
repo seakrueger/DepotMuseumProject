@@ -2,7 +2,7 @@ import time
 import os
 from queue import Queue
 
-from Ui.video_player import Player
+from ui.video_player import Player
 
 class VideoHandler:
 	def __init__(self, video_paths: list, queue: Queue):
