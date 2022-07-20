@@ -2,14 +2,14 @@ import time
 import os
 from queue import Queue
 
-from Ui.video_player import VLC
+from Ui.video_player import Player
 
 class VideoHandler:
 	def __init__(self, video_paths: list, queue: Queue):
 		self.videos = video_paths
 		self.queue = queue
 
-		self.vlc = VLC()
+		self.vlc = Player()
 		
 	def run(self):
 		while True:

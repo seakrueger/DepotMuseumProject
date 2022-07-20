@@ -1,29 +1,28 @@
 import threading
+import argparse
 from queue import Queue
-import sys
+
 
 from hardware.buttons import ButtonHandler
 from Ui.video_handler import VideoHandler
-<<<<<<< HEAD
 from displays.display import Display 
 
-
-def main():
+def main(args):
     display = Display(5)
-=======
-from displays.nuclear import Nuclear 
-
-
-def main():
-    display = Nuclear(5)
->>>>>>> a639958 (nuclear main.py)
     
     q = Queue()
-    buttons = ButtonHandler(display, q)
+    buttons = ButtonHandler(args, display, q)
     video = VideoHandler(["timer.mov", "timer2.mov", "WindWater/windmill_idle.mp4"], q)
     
     threading.Thread(target=buttons.run, args=()).start()
-    threading.Thread(target=video.run, args=()).start()    
+    if args.video:
+        threading.Thread(target=video.run, args=()).start()    
 
 if __name__ == "__main__":
-    main()
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--video", default=True, action=argparse.BooleanOptionalAction)
+    parser.add_argument("--model", default=True, action=argparse.BooleanOptionalAction)
+
+    args = parser.parse_args()
+    
+    main(args)

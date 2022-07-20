@@ -2,13 +2,13 @@ from vlc import MediaPlayer, Media
 import os
 import time
 
-class VLC():
+class Player():
     def __init__(self):
         self.player = MediaPlayer()
         self.player.toggle_fullscreen()
 
         self.playing = False
-        self.path = r"/home/pi/source/Ui/assets/"
+        self.path = os.path.dirname(__file__) + "/assets/"
 
     def play(self, media):
         video = Media(os.path.join(self.path, media))

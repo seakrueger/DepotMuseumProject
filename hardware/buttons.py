@@ -9,9 +9,10 @@ from adafruit_seesaw.pwmout import PWMOut
 from displays.display import Display
 
 class ButtonHandler():
-    def __init__(self, display: Display, queue: Queue, delay=0.01, addr=0x3A):
+    def __init__(self, args, display: Display, queue: Queue, delay=0.01, addr=0x3A):
         super().__init__()
         
+        self.args = args
         self.display = display
         self.queue = queue
 
@@ -53,24 +54,30 @@ class ButtonHandler():
         while True:
             if not self.buttons[0].value:
                 self._pulse_on(0)
-                
-                self.queue.put(0)
-                self.display.button_one()
+
+                if self.args.video:
+                    self.queue.put(0)
+                if self.args.model:
+                    self.display.button_one()
                 
                 self._pulse_off(0)
 
             if not self.buttons[1].value:
                 self._pulse_on(1)
                 
-                self.queue.put(1)
-                self.display.button_two()
+                if self.args.video:
+                    self.queue.put(1)
+                if self.args.model:
+                    self.display.button_two()
                 
                 self._pulse_off(1)
             
             if not self.buttons[2].value:
                 self._pulse_on(2)
                 
-                self.queue.put(2)
-                self.display.button_three()
+                if self.args.video:
+                    self.queue.put(2)
+                if self.args.model:
+                    self.display.button_three()
                 
                 self._pulse_off(2)
