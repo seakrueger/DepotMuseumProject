@@ -1,6 +1,6 @@
 from adafruit_servokit import ServoKit
 
-from hardware.single_led import LED
+from hardware.led import LED
 from displays.display import Display
 
 class Nuclear(Display):
@@ -8,10 +8,26 @@ class Nuclear(Display):
         super().__init__(wait)
 
         self.servo_kit = ServoKit(channels=16)
+        self.reactor = LED(26)
 
     def button_one(self):
+        self.reactor.flash(10)
+        self.reactor.on()
+
+        self.wait()
+
+        self.reactor.off()
+
+    def button_two(self):
         self.servo_kit.continuous_servo[0].throttle = 0.5
 
-        super().wait()
+        self.wait()
 
         self.servo_kit.continuous_servo[0].throttle = 0
+
+    def button_three(self):
+        self.servo_kit.continuous_servo[1].throttle = -0.1
+
+        self.wait()
+
+        self.servo_kit.continuous_servo[1].throttle = 0

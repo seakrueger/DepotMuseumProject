@@ -15,7 +15,7 @@ class LED():
     def off(self):
         GPIO.output(self.pin, GPIO.LOW)
 
-    def flash(self, delay, num_flashes):
+    def flash(self, num_flashes, delay=0.5):
         n = 0
         while n < num_flashes: 
             self.on()
