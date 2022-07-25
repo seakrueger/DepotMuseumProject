@@ -6,7 +6,16 @@ from queue import Queue
 
 from hardware.buttons import ButtonHandler
 from ui.video_handler import VideoHandler
-from displays.display import Display
+
+user = os.environ.get('USER')
+if user == "wind":
+    from displays.wind_water import WindNWater as Display
+elif user == "coal":
+    from displays.coal import Coal as Display
+elif user == "nuclear":
+    from displays.nuclear import Nuclear as Display
+else:
+    from displays.display import Display
 
 def main(args):
     logging.basicConfig(format='%(asctime)s - %(message)s', level=logging.INFO)
