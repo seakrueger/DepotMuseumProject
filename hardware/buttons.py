@@ -47,13 +47,13 @@ class ButtonHandler():
 
     def _pulse_on(self, led_num):
         for cycle in range(0, 65535, 2000):
-                self.leds[led_num].duty_cycle = cycle
-                time.sleep(self.delay)
+            self.leds[led_num].duty_cycle = cycle
+            time.sleep(self.delay)
 
     def _pulse_off(self, led_num):
         for cycle in range(65534, 0, -2000):
-                self.leds[led_num].duty_cycle = cycle
-                time.sleep(self.delay)
+            self.leds[led_num].duty_cycle = cycle
+            time.sleep(self.delay)
 
     def run(self):
         while True:
