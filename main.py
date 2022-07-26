@@ -6,7 +6,16 @@ from queue import Queue
 
 from hardware.buttons import ButtonHandler
 from ui.video_handler import VideoHandler
-from displays.display import Display 
+
+user = os.environ.get('USER')
+if user == "wind":
+    from displays.wind_water import WindNWater as Display
+elif user == "coal":
+    from displays.coal import Coal as Display
+elif user == "nuclear":
+    from displays.nuclear import Nuclear as Display
+else:
+    from displays.display import Display
 
 def main(args):
     logging.basicConfig(format='%(asctime)s - %(message)s', level=logging.INFO)
@@ -22,7 +31,7 @@ def main(args):
     threading.Thread(target=buttons.run, args=(), name="Buttons").start()
 
     if args.video:
-        video = VideoHandler(["timer.mov", "timer2.mov", "WindWater/windmill_idle.mp4"], q)
+        video = VideoHandler(q)
         threading.Thread(target=video.run, args=(), name="Video").start()
 
     logging.info("Started all threads")
@@ -34,5 +43,5 @@ if __name__ == "__main__":
     parser.add_argument("--vlclog", default=False, action=argparse.BooleanOptionalAction)
 
     args = parser.parse_args()
-    
+
     main(args)

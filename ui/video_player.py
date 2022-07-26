@@ -9,7 +9,7 @@ class Player():
         self.player.toggle_fullscreen()
 
         self.playing = False
-        self.path = os.path.dirname(__file__) + "/assets/"
+        self.path = os.path.dirname(__file__) + "/assets/" + os.environ.get('USER')
 
     def play(self, media):
         video = Media(os.path.join(self.path, media))
@@ -20,5 +20,5 @@ class Player():
         logging.debug("finished")
 
     def _wait_for_finish(self):
-        while self.player.get_state() not in set([5, 6, 7]):
-            time.sleep(0.1)    
+        while self.player.get_state() not in {5, 6, 7}:
+            time.sleep(0.1)

@@ -9,19 +9,19 @@ class Coal(Display):
         self.motor_a = Motor("A")
         self.motor_b = Motor("B")
 
-        self.motor_a.set_default_speed(25)
-        self.motor_b.set_default_speed(5)
+        self.motor_b.set_default_speed(25)
+        self.motor_a.set_default_speed(5)
 
     def button_one(self):
-        self.motor_a.start()
-
-        self.wait()
-
-        self.motor_a.stop()
-
-    def button_two(self):
         self.motor_b.start()
 
         self.wait()
 
         self.motor_b.stop()
+
+    def button_two(self):
+        self.motor_a.start()
+
+        self.wait()
+
+        self.motor_a.stop()
