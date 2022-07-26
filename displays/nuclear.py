@@ -9,13 +9,16 @@ class Nuclear(Display):
 
         self.servo_kit = ServoKit(channels=16)
         self.reactor = LED(26)
+        self.power_lines = LED(6)
 
     def button_one(self):
+        self.power_lines.on()
         self.reactor.flash(10)
         self.reactor.on()
 
         self.wait()
 
+        self.power_lines.off()
         self.reactor.off()
 
     def button_two(self):
