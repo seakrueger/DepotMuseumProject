@@ -24,7 +24,7 @@ def main(args):
     else:
         os.environ["VLC_VERBOSE"] = str("-1")
 
-    display = Display(5)
+    display = Display(60)
     q = Queue()
 
     buttons = ButtonHandler(args, display, q)
