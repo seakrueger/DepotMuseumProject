@@ -1,5 +1,5 @@
 # DepotMuseumProject
-Code for an exhibit at a local history museum, betwem July and December 2022.
+Code for an exhibit at a local history museum, between July and December 2022.
 
 <img src="https://user-images.githubusercontent.com/71362472/183158196-8f762f63-6a50-4dec-bef5-92e73fbde742.jpg" width="400" height="300" />
 <img src="https://user-images.githubusercontent.com/71362472/183157235-ceb5c698-0801-4d22-b72e-80e2ba5e76a1.jpg" width="400" height="300" />
